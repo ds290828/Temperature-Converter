@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <style>
+        body{
+            background-color: rgb(0, 225, 255);
+            padding:50px 100px;
+
+        }
+        h1{
+            text-align: center;
+            font-size: 40px;
+        }
+        #container{
+            border: 7px ridge black;
+            border-radius: 3px;
+            text-align: center;
+            background-color:rgb(162, 190, 206);
+            padding: 50px;
+        }
+        .input-div{
+            display:inline-block;
+        }
+        .inp{
+            padding: 5px 10px;
+            margin:10px;
+            font-size: 30px;
+            font-weight: bold;
+            width:250px;
+            text-align: center; 
+        }
+        label{
+           font-size: 32px;
+           font-weight: bold;
+           color:rgb(40, 40, 59); 
+        }
+    </style>
+</head>
+<body>
+    <h1><u>Temperature Converter</u></h1>
+    <div id="container">
+        <div class="input-div">
+            <label>Celsius</label><br>
+           <input type="number" value="0" id="cel" class="inp">
+        </div>
+        <div class="input-div" >
+            <label>Fahrenheit</label><br>
+            <input type="number" value="32" id="fah" class="inp">
+        </div>
+         <br>
+        <div class="input-div">
+            <label>Fahrenheit</label><br>
+           <input type="number" value="32" id="fah2" class="inp">
+        </div>
+        <div class="input-div" >
+            <label>Kelvin</label><br>
+            <input type="number" value="273.15" id="kel2" class="inp">
+        </div>
+        <br>
+        <div class="input-div">
+            <label>Celsius</label><br>
+           <input type="number" value="0" id="cel2" class="inp">
+        </div>
+        <div class="input-div" >
+            <label>Kelvin</label><br>
+            <input type="number" value="273.15" id="kel" class="inp">
+        </div>
+         <br>
+
+    </div>
+
+    <script>
+        var x=document.getElementById("cel2");
+        var y=document.getElementById("kel");
+        y.addEventListener("input",function(){
+            let k=this.value;
+            let c=k-273.15;
+            x.value=c;
+        });
+        x.addEventListener("input",function(){
+            let c=this.value;
+            let k=c+273;
+            y.value=k;
+        });
+
+        var fah2=document.getElementById("fah2");
+        var kel2=document.getElementById("kel2");
+        fah2.addEventListener('input',function(){
+          let f=this.value;
+          let k=(f - 32) * 5/9 + 273.15;
+          if(!Number.isInteger(k))
+          {
+             k=k.toFixed(4);
+          }
+          kel2.value=k;
+        });
+
+        kel2.addEventListener('input',function(){
+            let k=this.value;
+            let f=(k-273.15) * 9/5 + 32;
+            if(!Number.isInteger(f))
+            {
+                f=f.toFixed(4);
+            }
+            fah2.value=f;
+        });
+
+        var cel=document.getElementById("cel");
+        var fah=document.getElementById("fah");
+        cel.addEventListener('input',function(){
+          let c=this.value;
+          let f=(c* 9/5)+32;
+          if(!Number.isInteger(f))
+          {
+             f=f.toFixed(4);
+          }
+          fah.value=f;
+        });
+
+        fah.addEventListener('input',function(){
+            let f=this.value;
+            let c=(f-32)*5/9;
+            if(!Number.isInteger(c))
+            {
+                c=c.toFixed(4);
+            }
+            cel.value=c;
+        });
+
+    </script>
+</body>
+</html>
